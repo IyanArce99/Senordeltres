@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 30px;
+
+    .logo {
+        max-width: 200px;
+    }
+
+
+    ion-progress-bar {
+        width: 200px;
+        height: 25px;
+        border-radius: 10px;
+        --background: red!important;
+        --progress-background: linear-gradient(to right, #3398da 35%, #0566a2 68%);
+    }
+}
