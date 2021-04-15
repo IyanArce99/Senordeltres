@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router"; 
 
 @Component({
   selector: 'app-loading',
@@ -11,7 +12,7 @@ export class LoadingPage implements OnInit {
   p_bar_value: number;
   logo = "assets/logo.png";
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.runDeterminateProgress();
@@ -20,16 +21,21 @@ export class LoadingPage implements OnInit {
 
   runDeterminateProgress() {
     for (let index = 0; index <= 100; index++) {
-      this.setPercentBar(+index);
+        this.setPercentBar(+index);
     }
   }
 
   setPercentBar(i) {
+    debugger;
     setTimeout(() => {
       let apc = (i / 100)
-      console.log(apc);
       this.p_bar_value = apc;
-    }, 60 * i);
+      if (this.p_bar_value === 1) {
+        this.router.navigate(['./add-users']);
+      }
+
+    }, 30 * i);
+
   }
 
   

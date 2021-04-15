@@ -26,25 +26,36 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-.bg-01 {
-    background: #1D1D2C;
+@font-face {
+  font-family: Josefin;
+  font-weight: regular;
+  src: url("./assets/fonts/JosefinSans-Regular.ttf") format("opentype");
 }
 
-.ldBar {
-    position: relative;
-  }
-  .ldBar.label-center > .ldBar-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-shadow: 0 0 3px #fff;
-  }
-  .ldBar-label:after {
-    content: "%";
-    display: inline;
-  }
-  .ldBar.no-percent .ldBar-label:after {
-    content: "";
-  }
+* {
+  font-family: Josefin;
+}
+
+.bg-01 {
+  background: #EBA63F;
+}
+
+.bg-02 {
+  background:  #E40C2B;
+}
+
+.bg-03 {
+  background: #1d1d2c;
+}
+
+.bg-04 {
+  background: #f7f4e9;
+}
+
+.bg-05 {
+  background: #3cbcc3;
+}
+
+.bg-06 {
+  background: #438945;
+}

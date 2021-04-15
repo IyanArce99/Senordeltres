@@ -8,6 +8,7 @@ import { LoadingPageRoutingModule } from './loading-routing.module';
 
 import { LoadingPage } from './loading.page';
 
+
 @NgModule({
   imports: [
     CommonModule,

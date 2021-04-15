@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DicesComponent } from '../../components/dices/dices.component';
 
 import { LoadingPage } from './loading.page';
 
