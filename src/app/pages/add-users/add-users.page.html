@@ -5,36 +5,30 @@
     <ion-icon name="help-circle" class="icons"></ion-icon>
   </div>
   <div class="players-list mb-2">
-    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <div class="player-item mb-2">
+    <div class="player-item mb-2" formArrayName="users" *ngFor="let creds of form.controls.users?.value; let i = index">
       <div class="player-icon bg-02 p-2"><ion-icon name="person"></ion-icon></div>
-      <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador"></ion-input>
+      <ng-container [formGroupName]="i">
+        <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador" formControlName="username"></ion-input>
+      </ng-container>
       <div class="player-action bg-01 pr-2"><ion-icon name="trash"></ion-icon></div>
     </div>
 
-    
-    <div class="player-item mb-2">
-      <div class="player-icon bg-02 p-2"><ion-icon name="person"></ion-icon></div>
-      <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador"></ion-input>
-      <div class="player-action bg-01 pr-2"><ion-icon name="trash"></ion-icon></div>
-    </div>
 
-    
-    <div class="player-item mb-2">
-      <div class="player-icon bg-02 p-2"><ion-icon name="person"></ion-icon></div>
-      <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador"></ion-input>
-      <div class="player-action bg-01 pr-2"><ion-icon name="trash"></ion-icon></div>
+    <div class="add-player mb-4">
+      <ion-icon (click)="addUserForm()" name="add-circle"></ion-icon>
+    </div>
+  
+    <div class="play d-flex justify-content-center">
+      <button type="submit" class="bg-02 p-3">PLAY <ion-icon name="play"></ion-icon></button>
+      {{textoDeInput}}
     </div>
     
+
+  </form>
   </div>
 
-  <div class="add-player mb-4">
-    <ion-icon name="add-circle"></ion-icon>
-  </div>
 
-  <div class="play d-flex justify-content-center">
-    <button class="bg-02 p-3">PLAY <ion-icon name="play"></ion-icon></button>
-  </div>
 
 </div>

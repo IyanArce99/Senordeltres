@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'add-users',
     loadChildren: () => import('./pages/add-users/add-users.module').then( m => m.AddUsersPageModule)
   },
+  {
+    path: 'select-three',
+    loadChildren: () => import('./pages/select-three/select-three.module').then( m => m.SelectThreePageModule)
+  },
 ];
 
 @NgModule({
