@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddUsersPageRoutingModule } from './add-users-routing.module';
+import { GentlemanDicesPageRoutingModule } from './gentleman-dices-routing.module';
 
-import { AddUsersPage } from './add-users.page';
-import { ReactiveFormsModule } from '@angular/forms';
+import { GentlemanDicesPage } from './gentleman-dices.page';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddUsersPageRoutingModule,
-    ReactiveFormsModule,
+    GentlemanDicesPageRoutingModule,
     IonicStorageModule.forRoot()
   ],
-  declarations: [AddUsersPage]
+  declarations: [GentlemanDicesPage]
 })
-export class AddUsersPageModule {}
+export class GentlemanDicesPageModule {}

@@ -22,6 +22,8 @@
     "@capacitor/core": "2.4.7",
     "@ionic-native/native-keyboard": "^5.32.0",
     "@ionic/angular": "^5.5.2",
+    "@ionic/storage": "^3.0.4",
+    "@ionic/storage-angular": "^3.0.6",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.6.0",
     "cordova-plugin-native-keyboard": "^2.0.6",

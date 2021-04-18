@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from "@angular/router"; 
+import { Router } from "@angular/router";
+import { Storage } from '@ionic/storage'; 
 
 @Component({
   selector: 'app-add-users',
@@ -11,7 +12,7 @@ export class AddUsersPage implements OnInit {
   form: FormGroup;
   allUsers: [] = [];
 
-  constructor(private fb: FormBuilder, private router: Router) { 
+  constructor(private fb: FormBuilder, private router: Router, private storage: Storage) { 
     this.form = this.fb.group({
       users: this.fb.array([]),
     });
@@ -21,10 +22,9 @@ export class AddUsersPage implements OnInit {
    
   }
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.form.value.users);
     this.allUsers = this.form.value.users;
-    console.log(this.allUsers);
+    this.storage.create();
+    this.storage.set('users', JSON.stringify(this.allUsers));
     this.router.navigate(['./select-three']);
   }
 

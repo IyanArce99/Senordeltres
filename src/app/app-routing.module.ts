@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'select-three',
     loadChildren: () => import('./pages/select-three/select-three.module').then( m => m.SelectThreePageModule)
   },
+  {
+    path: 'gentleman-dices',
+    loadChildren: () => import('./pages/gentleman-dices/gentleman-dices.module').then( m => m.GentlemanDicesPageModule)
+  },
 ];
 
 @NgModule({
