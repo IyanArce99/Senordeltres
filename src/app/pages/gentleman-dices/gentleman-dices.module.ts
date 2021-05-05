@@ -9,6 +9,8 @@ import { GentlemanDicesPageRoutingModule } from './gentleman-dices-routing.modul
 import { GentlemanDicesPage } from './gentleman-dices.page';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+import { DicesComponent } from '../../components/dices/dices.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     GentlemanDicesPageRoutingModule,
     IonicStorageModule.forRoot()
   ],
-  declarations: [GentlemanDicesPage]
+  declarations: [GentlemanDicesPage, DicesComponent]
 })
 export class GentlemanDicesPageModule {}

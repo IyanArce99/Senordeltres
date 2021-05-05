@@ -26,7 +26,6 @@ export class LoadingPage implements OnInit {
   }
 
   setPercentBar(i) {
-    debugger;
     setTimeout(() => {
       let apc = (i / 100)
       this.p_bar_value = apc;

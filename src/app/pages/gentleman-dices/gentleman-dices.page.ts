@@ -15,8 +15,8 @@ export class GentlemanDicesPage implements OnInit {
 
   async ngOnInit() {
     let arr: any = [];
-    let result: string = await this.storage.get('users');
-    arr.push(result);
+    let result = await this.storage.get('users');
+    arr.push(JSON.parse(result));
     this.usersPlaying = arr[0];
     // console.log(arr[0]);
 
@@ -25,8 +25,8 @@ export class GentlemanDicesPage implements OnInit {
   }
 
 
-  nextUser () {
-
+  changueArr() {
+    
   }
 
 }
