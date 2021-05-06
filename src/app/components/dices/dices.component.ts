@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class DicesComponent implements OnInit {
  
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
@@ -26,15 +27,21 @@ export class DicesComponent implements OnInit {
    
     this.getNext(this.dicesResult.includes(3));
 
-    // Hago un setTimeout con la espera de 1.25s para espera a que termine la animación de los dados.
+    // Hago un setTimeout con la espera de 1.4s para espera a que termine la animación de los dados.
     setTimeout(()=>{
       if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
-        alert('LISTO');
+        alert('Ya salieron todos sorteados');
       }
-    }, 1250);
+    }, 1400);
   }
 
   getNext(isSenioDelTres: boolean): void {
+    if (isSenioDelTres) {
+      setTimeout(()=>{
+        this.router.navigate(['./you-are']);
+      }, 1500);
+    }
+    
     DataService.getNext(isSenioDelTres);
     if (DataService.userPlaying.isSeniorDelTres) {
       this.getNext(isSenioDelTres);

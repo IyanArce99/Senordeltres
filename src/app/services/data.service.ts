@@ -6,6 +6,7 @@ import { User } from '../pages/gentleman-dices/gentleman-dices.page';
 })
 export class DataService {
   static userPlaying: User;
+  static lastUser: User = null;
   static users: User[];
   static positionActual: number;
   static quantitySeniorsDelTres: number;
@@ -32,7 +33,8 @@ export class DataService {
     }else{
       this.positionActual++;
     }
-
+    this.lastUser = this.userPlaying;
+    console.log(this.lastUser)
     this.userPlaying = this.users[this.positionActual];
   }
 }
