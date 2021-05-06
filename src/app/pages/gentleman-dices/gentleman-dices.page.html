@@ -1,6 +1,6 @@
-<div class="wrapper bg-05 h-100" (click)="changueArr()">
+<div class="wrapper bg-05 h-100">
   <div class="text" *ngIf='getUserPlaying()'>
-    Es tu turno {{getUserPlaying().username | slice:0:1}}
+    Es tu turno {{getUserPlaying().username}}
   </div>
 </div>
 <app-dices class="app-dice"></app-dices>

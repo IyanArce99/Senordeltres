@@ -27,7 +27,7 @@ export class AddUsersPage implements OnInit {
 
     // Inicializo el dataService seteando los usuarios
     DataService.init(this.allUsers);
-    
+
     this.router.navigate(['./select-three']);
   }
 
