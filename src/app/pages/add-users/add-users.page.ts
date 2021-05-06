@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Storage } from '@ionic/storage'; 
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-add-users',
@@ -12,7 +13,7 @@ export class AddUsersPage implements OnInit {
   form: FormGroup;
   allUsers: [] = [];
 
-  constructor(private fb: FormBuilder, private router: Router, private storage: Storage) { 
+  constructor(private fb: FormBuilder, private router: Router) { 
     this.form = this.fb.group({
       users: this.fb.array([]),
     });
@@ -23,8 +24,10 @@ export class AddUsersPage implements OnInit {
   }
   onSubmit() {
     this.allUsers = this.form.value.users;
-    this.storage.create();
-    this.storage.set('users', JSON.stringify(this.allUsers));
+
+    // Inicializo el dataService seteando los usuarios
+    DataService.init(this.allUsers);
+    
     this.router.navigate(['./select-three']);
   }
 

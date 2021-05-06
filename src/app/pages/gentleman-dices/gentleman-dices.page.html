@@ -1,7 +1,6 @@
 <div class="wrapper bg-05 h-100" (click)="changueArr()">
-  <div class="text" *ngFor="let user of usersPlaying | slice:0:1">
-    {{user.username}}
+  <div class="text" *ngIf='getUserPlaying()'>
+    Es tu turno {{getUserPlaying().username | slice:0:1}}
   </div>
-<button (click)="nextUser()">aaa</button>
 </div>
-<app-dices></app-dices>
+<app-dices class="app-dice"></app-dices>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-dices',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dices.component.scss'],
 })
 export class DicesComponent implements OnInit {
-
+ 
   constructor() { }
 
   ngOnInit() {}
@@ -22,7 +23,22 @@ export class DicesComponent implements OnInit {
       this.dicesResult[i] = number;
       die.dataset.roll = number;
     });
-    console.log(this.dicesResult);
+   
+    this.getNext(this.dicesResult.includes(3));
+
+    // Hago un setTimeout con la espera de 1.25s para espera a que termine la animación de los dados.
+    setTimeout(()=>{
+      if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
+        alert('LISTO');
+      }
+    }, 1250);
+  }
+
+  getNext(isSenioDelTres: boolean): void {
+    DataService.getNext(isSenioDelTres);
+    if (DataService.userPlaying.isSeniorDelTres) {
+      this.getNext(isSenioDelTres);
+    }
   }
 
   toggleClasses(die) {
