@@ -30,6 +30,9 @@
     button {
       border-radius: 6px;
     }
+    .-disabled {
+      background-color: #707070;
+    }
   }
   .die-list {
     display: grid;
