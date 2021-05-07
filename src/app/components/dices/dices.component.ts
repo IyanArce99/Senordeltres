@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,10 +8,20 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./dices.component.scss'],
 })
 export class DicesComponent implements OnInit {
- 
-  constructor(private router: Router) { }
+  showButtonNextUser: boolean;
+  actualPlayerIsSeniorDelTres: boolean;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+   
+    this.activatedRoute.params.subscribe((e)=>{
+      if (e.isAlreadyToPlay && e.isAlreadyToPlay !== 'false'){
+        alert('Ya salieron todos sorteados');
+      }
+    })
+  }
 
   dicesResult = [];
 
@@ -24,24 +34,29 @@ export class DicesComponent implements OnInit {
       this.dicesResult[i] = number;
       die.dataset.roll = number;
     });
-   
-    this.getNext(this.dicesResult.includes(3));
 
-    // Hago un setTimeout con la espera de 1.4s para espera a que termine la animación de los dados.
-    setTimeout(()=>{
-      if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
-        alert('Ya salieron todos sorteados');
-      }
-    }, 1400);
-  }
+    this.actualPlayerIsSeniorDelTres = this.dicesResult.includes(3);
+
+    if (this.actualPlayerIsSeniorDelTres){
+      setTimeout(()=>{
+        // Esto es para actualizar el numero de seniores del tres y al jugador de este momento agregarle el true de seniores del tres. Ya que no se corre la funcion next en este caso.
+        DataService.addOneSeniorsDelTres();
+        // Para el componente de you-are
+        DataService.setLastUser();
+        if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
+          this.router.navigate(['./you-are', {isAlreadyToPlay: true}]); 
+        }else {
+          this.getNext(this.actualPlayerIsSeniorDelTres);
+          this.router.navigate(['./you-are', {isAlreadyToPlay: false}]); 
+        }
+      }, 1400);
+    }else{
+      this.showButtonNextUser = true;
+    }
+  }  
 
   getNext(isSenioDelTres: boolean): void {
-    if (isSenioDelTres) {
-      setTimeout(()=>{
-        this.router.navigate(['./you-are']);
-      }, 1500);
-    }
-    
+    this.showButtonNextUser = false;    
     DataService.getNext(isSenioDelTres);
     if (DataService.userPlaying.isSeniorDelTres) {
       this.getNext(isSenioDelTres);

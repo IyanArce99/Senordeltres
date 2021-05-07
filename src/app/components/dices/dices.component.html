@@ -72,4 +72,5 @@
 </div>
 <div class="button-container">
   <button type="button" class="button" (click)="rollDice()">Tirar dados</button>
+  <button type="button" class="button" style="margin-left: 20px;" (click)="getNext(actualPlayerIsSeniorDelTres)" *ngIf='showButtonNextUser'>Siguiente jugador</button>
 </div>

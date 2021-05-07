@@ -21,6 +21,13 @@ export class DataService {
     this.positionActual = 0;
   }
 
+  static setLastUser(){
+    this.lastUser = this.userPlaying;
+  }
+  static addOneSeniorsDelTres(): void {
+    DataService.quantitySeniorsDelTres++;
+    this.userPlaying.isSeniorDelTres = true;
+  }
   static getNext(isSeniorDelTres: boolean): void {
     // Seteo si es señor del tres y avanzo en 1 el contador de la cantidad de señores del tres.
     if (!this.userPlaying.isSeniorDelTres && isSeniorDelTres){
@@ -34,7 +41,6 @@ export class DataService {
       this.positionActual++;
     }
     this.lastUser = this.userPlaying;
-    console.log(this.lastUser)
     this.userPlaying = this.users[this.positionActual];
   }
 }
