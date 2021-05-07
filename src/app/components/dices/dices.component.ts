@@ -15,7 +15,7 @@ export class DicesComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+    // Creamos un observer para cuando llegue por param isAlreadyToPlay === 'false' lanzar la alerta o el component que sea necesario posteriormente.
     this.activatedRoute.params.subscribe((e)=>{
       if (e.isAlreadyToPlay && e.isAlreadyToPlay !== 'false'){
         alert('Ya salieron todos sorteados');
