@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class DicesComponent implements OnInit {
   showButtonNextUser: boolean;
   actualPlayerIsSeniorDelTres: boolean;
+  dicesResult = [];
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
 
   }
@@ -17,13 +18,23 @@ export class DicesComponent implements OnInit {
   ngOnInit() {
     // Creamos un observer para cuando llegue por param isAlreadyToPlay === 'false' lanzar la alerta o el component que sea necesario posteriormente.
     this.activatedRoute.params.subscribe((e)=>{
+      if(DataService.diceResults.length > 0){
+        let dices = <any>document.querySelectorAll(".die-list");
+        let dice = [...dices];
+        
+        dice.forEach((die, i) => {
+            let results: number = (i % 2 === 0) ? DataService.diceResults[0]: DataService.diceResults[1];
+            this.toggleClasses(die);
+            die.dataset.roll =results;          
+       });
+        DataService.diceResults=[];
+      }
       if (e.isAlreadyToPlay && e.isAlreadyToPlay !== 'false'){
         alert('Ya salieron todos sorteados');
       }
     })
   }
 
-  dicesResult = [];
 
   rollDice() {
     const dices = <any>document.querySelectorAll(".die-list");
@@ -32,6 +43,7 @@ export class DicesComponent implements OnInit {
       this.toggleClasses(die);
       const number = this.getRandomNumber(1, 6);
       this.dicesResult[i] = number;
+      DataService.diceResults[i] = number;
       die.dataset.roll = number;
     });
 

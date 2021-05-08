@@ -11,6 +11,7 @@ export class DataService {
   static positionActual: number;
   static quantitySeniorsDelTres: number;
   static halfOfUsers: number;
+  static diceResults: number[] = [];
   constructor() { }
 
   static init(users: User[]): void {
