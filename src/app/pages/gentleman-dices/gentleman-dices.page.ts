@@ -1,32 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+
+export interface User {
+  username: string;
+  isSeniorDelTres?: boolean;
+}
 
 @Component({
   selector: 'app-gentleman-dices',
   templateUrl: './gentleman-dices.page.html',
   styleUrls: ['./gentleman-dices.page.scss'],
 })
-export class GentlemanDicesPage implements OnInit {
-   usersPlaying: any;
+export class GentlemanDicesPage {
 
-  constructor(private storage: Storage) {
-    this.storage.create();
-   }
+  constructor() {}
 
-  async ngOnInit() {
-    let arr: any = [];
-    let result = await this.storage.get('users');
-    arr.push(JSON.parse(result));
-    this.usersPlaying = arr[0];
-    // console.log(arr[0]);
-
-    console.log( typeof arr);
-    
-  }
-
-
-  changueArr() {
-    
+  getUserPlaying(): User {
+    return DataService.userPlaying;
   }
 
 }

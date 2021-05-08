@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-dices',
@@ -6,12 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dices.component.scss'],
 })
 export class DicesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {}
-
+  showButtonNextUser: boolean;
+  actualPlayerIsSeniorDelTres: boolean;
   dicesResult = [];
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
+
+  }
+
+  ngOnInit() {
+    // Creamos un observer para cuando llegue por param isAlreadyToPlay === 'false' lanzar la alerta o el component que sea necesario posteriormente.
+    this.activatedRoute.params.subscribe((e)=>{
+      if(DataService.diceResults.length > 0){
+        let dices = <any>document.querySelectorAll(".die-list");
+        let dice = [...dices];
+        
+        dice.forEach((die, i) => {
+            let results: number = (i % 2 === 0) ? DataService.diceResults[0]: DataService.diceResults[1];
+            this.toggleClasses(die);
+            die.dataset.roll =results;          
+       });
+        DataService.diceResults=[];
+      }
+      if (e.isAlreadyToPlay && e.isAlreadyToPlay !== 'false'){
+        alert('Ya salieron todos sorteados');
+      }
+    })
+  }
+
 
   rollDice() {
     const dices = <any>document.querySelectorAll(".die-list");
@@ -20,9 +43,36 @@ export class DicesComponent implements OnInit {
       this.toggleClasses(die);
       const number = this.getRandomNumber(1, 6);
       this.dicesResult[i] = number;
+      DataService.diceResults[i] = number;
       die.dataset.roll = number;
     });
-    console.log(this.dicesResult);
+
+    this.actualPlayerIsSeniorDelTres = this.dicesResult.includes(3);
+
+    if (this.actualPlayerIsSeniorDelTres){
+      setTimeout(()=>{
+        // Esto es para actualizar el numero de seniores del tres y al jugador de este momento agregarle el true de seniores del tres. Ya que no se corre la funcion next en este caso.
+        DataService.addOneSeniorsDelTres();
+        // Para el componente de you-are
+        DataService.setLastUser();
+        if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
+          this.router.navigate(['./you-are', {isAlreadyToPlay: true}]); 
+        }else {
+          this.getNext(this.actualPlayerIsSeniorDelTres);
+          this.router.navigate(['./you-are', {isAlreadyToPlay: false}]); 
+        }
+      }, 1400);
+    }else{
+      this.showButtonNextUser = true;
+    }
+  }  
+
+  getNext(isSenioDelTres: boolean): void {
+    this.showButtonNextUser = false;    
+    DataService.getNext(isSenioDelTres);
+    if (DataService.userPlaying.isSeniorDelTres) {
+      this.getNext(isSenioDelTres);
+    }
   }
 
   toggleClasses(die) {
