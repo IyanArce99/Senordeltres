@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'you-are',
     loadChildren: () => import('./components/you-are/you-are-module').then(m => m.YouArePageModule)
+  },
+  {
+    path: 'play-loader',
+    loadChildren: () => import('./components/play-load-page/play-load-page-module').then(m => m.PlayLoadPageModule)
   }
 ];
 

@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./you-are.component.scss'],
 })
 export class YouAreComponent implements OnInit {
-  isAlreadyToPlay: boolean = false;
+  isAlreadyToPlay: any = false;
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,6 +25,10 @@ export class YouAreComponent implements OnInit {
   }
 
   returnToDice(): void {
-    this.router.navigate(['./gentleman-dices',{isAlreadyToPlay: this.isAlreadyToPlay}]);
+    if(this.isAlreadyToPlay && this.isAlreadyToPlay === 'true'){
+      this.router.navigate(['/play-loader']);
+    }else{
+      this.router.navigate(['./gentleman-dices',{isAlreadyToPlay: this.isAlreadyToPlay}]);
+    }
   }
 }

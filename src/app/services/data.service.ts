@@ -12,6 +12,7 @@ export class DataService {
   static quantitySeniorsDelTres: number;
   static halfOfUsers: number;
   static diceResults: number[] = [];
+  static selectSeniors: boolean;
   constructor() { }
 
   static init(users: User[]): void {
@@ -20,6 +21,7 @@ export class DataService {
     this.halfOfUsers = Math.floor(this.users.length / 2);
     this.quantitySeniorsDelTres = 0;
     this.positionActual = 0;
+    this.selectSeniors = true;
   }
 
   static setLastUser(){
@@ -42,6 +44,15 @@ export class DataService {
       this.positionActual++;
     }
     this.lastUser = this.userPlaying;
+    this.userPlaying = this.users[this.positionActual];
+  }
+
+  static getNextPlaying(): void {
+    if ( (this.positionActual + 1) > (this.users.length - 1) ) {
+      this.positionActual = 0;
+    }else{
+      this.positionActual++;
+    }
     this.userPlaying = this.users[this.positionActual];
   }
 }
