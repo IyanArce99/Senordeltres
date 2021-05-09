@@ -19,5 +19,16 @@ export class GentlemanDicesPage {
     return DataService.userPlaying;
   }
 
+  getShowMessage(): boolean {
+    return DataService.showMessage;
+  }
+
+  getMessage(): string {
+    return DataService.messageToShow;
+  }
+
+  showBackgroundRed(): boolean {
+    return DataService.showBackgroundRed;
+  }
 }
 

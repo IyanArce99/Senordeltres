@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class DicesComponent implements OnInit {
   showButtonNextUser: boolean;
   actualPlayerIsSeniorDelTres: boolean;
+  disabledButton: boolean;
   dicesResult = [];
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
 
@@ -46,10 +47,9 @@ export class DicesComponent implements OnInit {
       DataService.diceResults[i] = number;
       die.dataset.roll = number;
     });
-    console.log(this.dicesResult);
+    // Este if es para que se ejecute solo cuando esta en la pantalla de seleccion de señores del 3
     if (DataService.selectSeniors){
       this.actualPlayerIsSeniorDelTres = this.dicesResult.includes(3);
-
       if (this.actualPlayerIsSeniorDelTres){
         setTimeout(()=>{
           // Esto es para actualizar el numero de seniores del tres y al jugador de este momento agregarle el true de seniores del tres. Ya que no se corre la funcion next en este caso.
@@ -63,18 +63,22 @@ export class DicesComponent implements OnInit {
             this.router.navigate(['./you-are', {isAlreadyToPlay: false}]); 
           }
         }, 1400);
+       
       }else{
         this.showButtonNextUser = true;
       }
     }else {
+      this.disabledButton = true;
+      DataService.obtainPrenda(this.dicesResult);
       setTimeout(()=>{
         DataService.getNextPlaying();
+        this.disabledButton = false;
       },1400)
     }
   }  
 
   getNext(isSenioDelTres: boolean): void {
-    this.showButtonNextUser = false;    
+    this.showButtonNextUser = false;   
     DataService.getNext(isSenioDelTres);
     if (DataService.userPlaying.isSeniorDelTres) {
       this.getNext(isSenioDelTres);
