@@ -10,7 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 export class DicesComponent implements OnInit {
   showButtonNextUser: boolean;
   actualPlayerIsSeniorDelTres: boolean;
-  disabledButton: boolean;
   dicesResult = [];
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
 
@@ -68,20 +67,20 @@ export class DicesComponent implements OnInit {
         this.showButtonNextUser = true;
       }
     }else {
-      this.disabledButton = true;
+      this.showButtonNextUser = true;
       DataService.obtainPrenda(this.dicesResult);
-      setTimeout(()=>{
-        DataService.getNextPlaying();
-        this.disabledButton = false;
-      },1400)
     }
   }  
 
   getNext(isSenioDelTres: boolean): void {
     this.showButtonNextUser = false;   
-    DataService.getNext(isSenioDelTres);
-    if (DataService.userPlaying.isSeniorDelTres) {
-      this.getNext(isSenioDelTres);
+    if (DataService.selectSeniors){
+      DataService.getNext(isSenioDelTres);
+      if (DataService.userPlaying.isSeniorDelTres) {
+        this.getNext(isSenioDelTres);
+      }
+    }else {
+      DataService.getNextPlaying();
     }
   }
 
