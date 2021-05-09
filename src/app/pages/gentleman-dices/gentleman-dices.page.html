@@ -1,6 +1,9 @@
-<div class="wrapper bg-05 h-100">
+<div class="wrapper bg-05 h-100" [ngClass]="{'bg-05': !showBackgroundRed(), 'bg-02': showBackgroundRed()}">
   <div class="text -font-style" *ngIf='getUserPlaying()'>
     Es tu turno {{getUserPlaying().username}}
   </div>
+</div>
+<div class="-prenda-container" *ngIf='getShowMessage()'>
+  {{getMessage()}}
 </div>
 <app-dices class="app-dice"></app-dices>

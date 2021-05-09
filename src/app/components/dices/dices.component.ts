@@ -18,7 +18,8 @@ export class DicesComponent implements OnInit {
   ngOnInit() {
     // Creamos un observer para cuando llegue por param isAlreadyToPlay === 'false' lanzar la alerta o el component que sea necesario posteriormente.
     this.activatedRoute.params.subscribe((e)=>{
-      if(DataService.diceResults.length > 0){
+      
+      if(DataService.selectSeniors && DataService.diceResults.length > 0){
         let dices = <any>document.querySelectorAll(".die-list");
         let dice = [...dices];
         
@@ -29,16 +30,15 @@ export class DicesComponent implements OnInit {
        });
         DataService.diceResults=[];
       }
-      if (e.isAlreadyToPlay && e.isAlreadyToPlay !== 'false'){
-        alert('Ya salieron todos sorteados');
-      }
+    
     })
   }
 
 
   rollDice() {
     const dices = <any>document.querySelectorAll(".die-list");
-    const dice = [...dices];
+    const diceLarge = [...dices];
+    const dice = diceLarge.slice(diceLarge.length-2, diceLarge.length);
     dice.forEach((die, i) => {
       this.toggleClasses(die);
       const number = this.getRandomNumber(1, 6);
@@ -46,32 +46,41 @@ export class DicesComponent implements OnInit {
       DataService.diceResults[i] = number;
       die.dataset.roll = number;
     });
-
-    this.actualPlayerIsSeniorDelTres = this.dicesResult.includes(3);
-
-    if (this.actualPlayerIsSeniorDelTres){
-      setTimeout(()=>{
-        // Esto es para actualizar el numero de seniores del tres y al jugador de este momento agregarle el true de seniores del tres. Ya que no se corre la funcion next en este caso.
-        DataService.addOneSeniorsDelTres();
-        // Para el componente de you-are
-        DataService.setLastUser();
-        if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
-          this.router.navigate(['./you-are', {isAlreadyToPlay: true}]); 
-        }else {
-          this.getNext(this.actualPlayerIsSeniorDelTres);
-          this.router.navigate(['./you-are', {isAlreadyToPlay: false}]); 
-        }
-      }, 1400);
-    }else{
+    // Este if es para que se ejecute solo cuando esta en la pantalla de seleccion de señores del 3
+    if (DataService.selectSeniors){
+      this.actualPlayerIsSeniorDelTres = this.dicesResult.includes(3);
+      if (this.actualPlayerIsSeniorDelTres){
+        setTimeout(()=>{
+          // Esto es para actualizar el numero de seniores del tres y al jugador de este momento agregarle el true de seniores del tres. Ya que no se corre la funcion next en este caso.
+          DataService.addOneSeniorsDelTres();
+          // Para el componente de you-are
+          DataService.setLastUser();
+          if (DataService.halfOfUsers === DataService.quantitySeniorsDelTres) {
+            this.router.navigate(['./you-are', {isAlreadyToPlay: true}]); 
+          }else {
+            this.getNext(this.actualPlayerIsSeniorDelTres);
+            this.router.navigate(['./you-are', {isAlreadyToPlay: false}]); 
+          }
+        }, 1400);
+       
+      }else{
+        this.showButtonNextUser = true;
+      }
+    }else {
       this.showButtonNextUser = true;
+      DataService.obtainPrenda(this.dicesResult);
     }
   }  
 
   getNext(isSenioDelTres: boolean): void {
-    this.showButtonNextUser = false;    
-    DataService.getNext(isSenioDelTres);
-    if (DataService.userPlaying.isSeniorDelTres) {
-      this.getNext(isSenioDelTres);
+    this.showButtonNextUser = false;   
+    if (DataService.selectSeniors){
+      DataService.getNext(isSenioDelTres);
+      if (DataService.userPlaying.isSeniorDelTres) {
+        this.getNext(isSenioDelTres);
+      }
+    }else {
+      DataService.getNextPlaying();
     }
   }
 
