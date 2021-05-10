@@ -73,7 +73,9 @@ export class DicesComponent implements OnInit {
   }  
 
   getNext(isSenioDelTres: boolean): void {
-    this.showButtonNextUser = false;   
+    this.showButtonNextUser = false;
+    DataService.showMessage = false;
+    DataService.showBackgroundRed = false;
     if (DataService.selectSeniors){
       DataService.getNext(isSenioDelTres);
       if (DataService.userPlaying.isSeniorDelTres) {

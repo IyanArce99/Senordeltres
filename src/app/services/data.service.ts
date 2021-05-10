@@ -76,8 +76,6 @@ export class DataService {
 
 
   static obtainPrenda(resultDice: number[]): void{
-    this.showMessage = false;
-    this.showBackgroundRed = false;
     setTimeout(()=>{
       let sum: number = resultDice[0] + resultDice[1];
       if(resultDice.every(value=>value === 3)){
@@ -100,10 +98,7 @@ export class DataService {
       else if (sum === 9){
         this.messageToShow = 'BEBE EL JUGADORE DE LA DERECHA!';
       }else {
-        this.messageToShow = '';
-        this.showMessage = false;
-        this.showBackgroundRed = false;
-        return;
+        this.messageToShow = 'NO TE HA TOCADO NADA!';
       }
   
       this.showMessage = true;
