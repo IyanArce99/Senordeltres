@@ -1,0 +1,46 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" class="bg-03" #mySlider>
+    <ion-slide class="d-flex flex-column justify-space-around">
+      <div class="upper">
+        <img src="../../../assets/logo.png" alt="" class="w-50">
+        <h1>¿Cómo jugar?</h1>
+        <p class="px-3">El juego es muy sencillo e intuitivo, solo debes disfrutar y dejarte llevar. Ten cuidado con el consumo abusivo de alcohol.</p>
+        <div class="next">
+          <ion-button class="bg-01 text-white" (click)="slideNext()" fill="clear">¡Ver reglas! <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </div>
+      </div>
+      <div class="skip">
+        <p class="font-italic font-small">Skip tutorial</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="d-flex flex-column justify-space-around">
+      <div class="upper">
+        <img src="../../../assets/logo.png" alt="" class="w-50">
+        <h1>Primera ronda</h1>
+        <p class="px-3">Se jugará una primera ronda en la que todos los jugadores tirarán los dados, hasta que al menos la mitad de los jugadores sean señores del 3. Se es señor del tres cuando en uno de los dos dados sale algún 3.</p>
+        <div class="next">
+          <ion-button class="bg-01 text-white" (click)="slideNext()" fill="clear">Siguiente paso <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </div>
+      </div>
+      <div class="skip">
+        <p class="font-italic font-small">Skip tutorial</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide class="d-flex flex-column justify-space-around">
+      <div class="upper">
+        <img src="../../../assets/logo.png" alt="" class="w-50">
+        <h1>¡A jugar y beber!</h1>
+        <p class="px-3">Por turnos, ireis tirando los dados los jugadores. Depende que combinación salga, se beberán una cantidad de chupitos o tragos determinada. Eso sí, si sale un 3, los señores del tres beberán más, jeje,</p>
+        <div class="next">
+          <ion-button class="bg-01 text-white" (click)="goPlayersScreen()" fill="clear">¡Entendido! <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </div>
+      </div>
+      <div class="skip">
+        <p class="font-italic font-small">Skip tutorial</p>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

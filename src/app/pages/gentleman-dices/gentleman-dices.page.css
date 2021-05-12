@@ -1,1 +1,24 @@
-/* No CSS *//*# sourceMappingURL=gentleman-dices.page.css.map */
+.app-dice {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.text.-font-style {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.-prenda-container {
+  position: absolute;
+  top: 4rem;
+  width: 85%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 1.5em;
+  color: #ffffff;
+}
+/*# sourceMappingURL=gentleman-dices.page.css.map */

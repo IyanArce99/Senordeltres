@@ -1,0 +1,27 @@
+.you-are-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.you-are-container .-description {
+  font-size: 2.5rem;
+  padding: 25px;
+  color: #ffffff;
+}
+
+.you-are-container ion-icon {
+  font-size: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/*# sourceMappingURL=you-are.component.css.map */

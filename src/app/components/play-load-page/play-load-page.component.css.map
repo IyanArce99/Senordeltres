@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "AAAA,AACI,QADI,CACJ,IAAI,AAAA,QAAQ,CAAA;EACR,YAAY,EAAE,CAAC;EACf,WAAW,EAAE,CAAC;CACjB;;AAJL,AAKI,QALI,CAKJ,MAAM,CAAC;EACH,SAAS,EAAE,KAAK;CACnB",
     "sources": [
-        "select-three.page.scss"
+        "play-load-page.component.scss"
     ],
     "names": [],
-    "file": "select-three.page.css"
+    "file": "play-load-page.component.css"
 }

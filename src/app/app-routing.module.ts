@@ -34,7 +34,12 @@ const routes: Routes = [
   {
     path: 'play-loader',
     loadChildren: () => import('./components/play-load-page/play-load-page-module').then(m => m.PlayLoadPageModule)
-  }
+  },
+  {
+    path: 'how-slider',
+    loadChildren: () => import('./components/how-slider/how-slider.module').then( m => m.HowSliderPageModule)
+  },
+ 
 ];
 
 @NgModule({

@@ -38,4 +38,8 @@ export class AddUsersPage implements OnInit {
     }));
   }
 
+  showHowToPlay() {
+    this.router.navigate(['./how-slider']);
+  }
+
 }

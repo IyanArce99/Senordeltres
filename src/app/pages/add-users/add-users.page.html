@@ -2,7 +2,7 @@
   <div class="header mb-4 d-flex justify-content-between align-items-center">
     <img src="../../../assets/spain.png" alt="" width="30px">
     <h3 class="text-center">Añadir jugadores</h3>
-    <ion-icon name="help-circle" class="icons"></ion-icon>
+    <ion-icon (click)="showHowToPlay()" name="help-circle" class="icons"></ion-icon>
   </div>
   <div class="players-list mb-2">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
