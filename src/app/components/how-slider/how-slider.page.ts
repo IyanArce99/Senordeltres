@@ -11,7 +11,6 @@ export class HowSliderPage implements OnInit {
   @ViewChild('mySlider')  slides: IonSlides;
 
   slideOpts = {
-    initialSlide: 0,
     speed: 400
   };
 

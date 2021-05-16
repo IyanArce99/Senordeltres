@@ -1,9 +1,10 @@
-.app-dice {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+.wrapper {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .text.-font-style {
@@ -12,13 +13,10 @@
 }
 
 .-prenda-container {
-  position: absolute;
-  top: 4rem;
-  width: 85%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   font-size: 1.5em;
-  color: #ffffff;
+}
+
+.brdr-10 {
+  border-radius: 10px;
 }
 /*# sourceMappingURL=gentleman-dices.page.css.map */

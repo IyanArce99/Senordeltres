@@ -12,16 +12,12 @@
           align-items: center;
 }
 
-.you-are-container .-description {
-  font-size: 2.5rem;
-  padding: 25px;
-  color: #ffffff;
+.you-are-container .img-vomit {
+  max-width: 150px;
 }
 
-.you-are-container ion-icon {
-  font-size: 60px;
-  position: absolute;
-  top: 0;
-  right: 0;
+.you-are-container .-description {
+  font-size: 2.5rem;
+  color: #ffffff;
 }
 /*# sourceMappingURL=you-are.component.css.map */

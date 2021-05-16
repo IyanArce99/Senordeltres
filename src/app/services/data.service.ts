@@ -98,7 +98,7 @@ export class DataService {
       else if (sum === 9){
         this.messageToShow = 'BEBE EL JUGADORE DE LA DERECHA!';
       }else {
-        this.messageToShow = 'NO TE HA TOCADO NADA!';
+        this.messageToShow = 'BEBES UN CHUPITO';
       }
   
       this.showMessage = true;

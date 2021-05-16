@@ -1,6 +1,8 @@
-<div class="you-are-container bg-02">
-  <div class="-description">{{getLastUser().username.toUpperCase()}}&nbsp;TE HA TOCADO SER EL SEÑOR DEL TRES</div>
-  <ion-icon name="close" (click)='returnToDice()'></ion-icon>
+<div class="you-are-container bg-02 d-flex flex-column">
+  <img src="../../../assets/icon/vomit.png" alt="" class="img-vomit">
+  <div class="-description text-center p-4">{{getLastUser().username}}, ¡te ha tocado ser señor del 3! Preparate para vomitar esta noche.</div>
+  <!-- <ion-icon name="close" (click)='returnToDice()'></ion-icon> -->
+  <ion-button class="bg-01 text-white" (click)="returnToDice()" fill="clear">Continuar <ion-icon name="arrow-forward"></ion-icon></ion-button>
 </div>
 
 

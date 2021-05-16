@@ -1,9 +1,10 @@
-<div class="wrapper bg-05 h-100" [ngClass]="{'bg-05': !showBackgroundRed(), 'bg-02': showBackgroundRed()}">
-  <div class="text -font-style" *ngIf='getUserPlaying()'>
-    Es tu turno {{getUserPlaying().username}}
+<div class="wrapper bg-05 h-100 d-flex" [ngClass]="{'bg-05': !showBackgroundRed(), 'bg-02': showBackgroundRed()}">
+  <div class="text -font-style px-3 py-2 text-center" *ngIf='getUserPlaying()'>
+    <h1><span class="font-weight-bold">{{getUserPlaying().username}}</span>, ¡es tu turno!, gira los dados</h1>
   </div>
+  <div class="-prenda-container p-3 mx-3 text-center text-white bg-03 brdr-10" *ngIf='getShowMessage()'>
+    {{getMessage()}}
+  </div>
+  <app-dices class="app-dice py-4"></app-dices>
 </div>
-<div class="-prenda-container" *ngIf='getShowMessage()'>
-  {{getMessage()}}
-</div>
-<app-dices class="app-dice"></app-dices>
+
