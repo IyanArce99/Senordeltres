@@ -24,6 +24,9 @@ export class AddUsersPage implements OnInit {
   }
   onSubmit() {
     this.allUsers = this.form.value.users;
+    this.form.value.users.forEach( element => {
+      element.username = element.username.charAt(0).toUpperCase() + element.username.slice(1);
+    });
 
     // Inicializo el dataService seteando los usuarios
     DataService.init(this.allUsers);
@@ -36,6 +39,13 @@ export class AddUsersPage implements OnInit {
     x.push(this.fb.group({
       username: '',
     }));
+  }
+
+  removeItem(i) {
+    const x = this.form.controls.users as FormArray;
+    x.removeAt(i);
+    
+    
   }
 
   showHowToPlay() {

@@ -27,7 +27,7 @@ export class PlayLoadPageComponent implements OnInit {
       messageSenioresDelTres += user.username;
     })
 
-    this.message = messageSenioresDelTres + ' son los señores del tres.';
+    this.message = messageSenioresDelTres;
   }
 
   redirectTo(): void {

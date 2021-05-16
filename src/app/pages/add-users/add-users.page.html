@@ -12,7 +12,7 @@
       <ng-container [formGroupName]="i">
         <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador" formControlName="username"></ion-input>
       </ng-container>
-      <div class="player-action bg-01 pr-2"><ion-icon name="trash"></ion-icon></div>
+      <div class="player-action bg-01 pr-2"><ion-icon (click)="removeItem(i)" name="trash"></ion-icon></div>
     </div>
 
 

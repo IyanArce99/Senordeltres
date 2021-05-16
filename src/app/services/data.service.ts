@@ -87,16 +87,16 @@ export class DataService {
         this.showBackgroundRed = true;
       }
       else if (resultDice[0] === resultDice[1]){
-        this.messageToShow = 'TU ELIGES QUIEN/ES TOMAN ' + resultDice[0] +' VASOS!';
+        this.messageToShow = 'TU ELIGES QUIEN BEBE ' + resultDice[0] +' CHUPITOS!';
       }
       else if (sum === 7){
-        this.messageToShow = 'BEBE EL JUGADOR DE LA IZQUIERDA!';
+        this.messageToShow = 'BEBE UN CHUPITO EL JUGADOR DE TU IZQUIERDA';
       }
       else if (sum === 8){
         this.messageToShow = 'TODOS BEBEN Y DIRAN LA PALABRA MIERDA AL POSAR EL VASO SOBRE LA MESA. EL ULTIMO JUGADOR EN HACERLO DEBE BEBER OTRO VASO!';
       }
       else if (sum === 9){
-        this.messageToShow = 'BEBE EL JUGADORE DE LA DERECHA!';
+        this.messageToShow = 'BEBE UN CHUPITO EL JUGADOR DE TU DERECHA';
       }else {
         this.messageToShow = 'BEBES UN CHUPITO';
       }
