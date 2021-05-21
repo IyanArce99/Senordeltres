@@ -2,6 +2,7 @@
   <div class="text -font-style px-3 py-2 text-center" *ngIf='getUserPlaying() && showInfoTurn()'>
     <h1><span class="font-weight-bold">{{getUserPlaying().username}}</span>, ¡es tu turno!, gira los dados</h1>
   </div>
+  <img src="../../../assets/icon/vomit.png" alt="" class="img-vomit" *ngIf='showBackgroundRed()'>
   <div class="-prenda-container p-3 mx-3 text-center text-white bg-03 brdr-10" *ngIf='getShowMessage()'>
     {{getMessage()}}
   </div>

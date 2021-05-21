@@ -77,7 +77,9 @@ export class DicesComponent implements OnInit {
     }else {
       this.getNext(this.actualPlayerIsSeniorDelTres);
     }
-    DataService.changeStateRollAndNext();
+    setTimeout(()=>{
+      DataService.changeStateRollAndNext();
+    }, DataService.rollDice ? 1400 : 0)
   }  
 
   getNext(isSenioDelTres: boolean): void {
