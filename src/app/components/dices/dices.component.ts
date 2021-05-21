@@ -9,7 +9,6 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./dices.component.scss'],
 })
 export class DicesComponent implements OnInit {
-  showButtonNextUser: boolean;
   actualPlayerIsSeniorDelTres: boolean;
   dicesResult = [];
   
@@ -71,11 +70,8 @@ export class DicesComponent implements OnInit {
             }
           }, 1400);
         
-        }else{
-          this.showButtonNextUser = true;
         }
       }else {
-        this.showButtonNextUser = true;
         DataService.obtainPrenda(this.dicesResult);
       }
     }else {
@@ -85,7 +81,6 @@ export class DicesComponent implements OnInit {
   }  
 
   getNext(isSenioDelTres: boolean): void {
-    this.showButtonNextUser = false;
     DataService.showMessage = false;
     DataService.showBackgroundRed = false;
     if (DataService.selectSeniors){
