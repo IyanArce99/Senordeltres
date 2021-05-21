@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { DicesComponent } from 'src/app/components/dices/dices.component';
 import { DataService } from 'src/app/services/data.service';
 
 export interface User {
@@ -12,6 +13,7 @@ export interface User {
   styleUrls: ['./gentleman-dices.page.scss'],
 })
 export class GentlemanDicesPage {
+  @ViewChild(DicesComponent) dicesComponent: DicesComponent;
 
   constructor() {}
 
@@ -29,6 +31,16 @@ export class GentlemanDicesPage {
 
   showBackgroundRed(): boolean {
     return DataService.showBackgroundRed;
+  }
+  roll(){
+    this.dicesComponent.rollDice();
+  }
+  showInfoTurn() {
+    if (DataService.selectSeniors) {
+      return true;
+    }
+    
+    return DataService.rollDice;
   }
 }
 

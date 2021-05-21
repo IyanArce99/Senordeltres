@@ -28,7 +28,12 @@ export class DataService {
   // Define si mostrar el fondo de pantalla rojo
   static showBackgroundRed: boolean;
 
-  
+  // Next User Status
+  static nextUser: boolean;
+  // Roll dice Status
+  static rollDice: boolean = true;
+  // Init roll dice
+  static isRollDiceInitialized: boolean;
 
   
   constructor() { }
@@ -40,6 +45,10 @@ export class DataService {
     this.quantitySeniorsDelTres = 0;
     this.positionActual = 0;
     this.selectSeniors = true;
+  }
+  static changeStateRollAndNext(): void {
+    this.nextUser = !this.nextUser;
+    this.rollDice = !this.rollDice;
   }
 
   static setLastUser(){
@@ -78,27 +87,28 @@ export class DataService {
   static obtainPrenda(resultDice: number[]): void{
     setTimeout(()=>{
       let sum: number = resultDice[0] + resultDice[1];
+      this.messageToShow = this.userPlaying.username + '. ';
       if(resultDice.every(value=>value === 3)){
-        this.messageToShow = 'DOBLE CABALLERO DEL TRES!';
+        this.messageToShow += 'DOBLE CABALLERO DEL TRES!';
         this.showBackgroundRed = true;
       }
       else if(resultDice.includes(3)){
-        this.messageToShow = 'BEBEN LOS SEÑORES DEL TRES!';
+        this.messageToShow += 'BEBEN LOS SEÑORES DEL TRES!';
         this.showBackgroundRed = true;
       }
       else if (resultDice[0] === resultDice[1]){
-        this.messageToShow = 'TU ELIGES QUIEN BEBE ' + resultDice[0] +' CHUPITOS!';
+        this.messageToShow += 'TU ELIGES QUIEN BEBE ' + resultDice[0] +' CHUPITOS!';
       }
       else if (sum === 7){
-        this.messageToShow = 'BEBE UN CHUPITO EL JUGADOR DE TU IZQUIERDA';
+        this.messageToShow += 'BEBE UN CHUPITO EL JUGADOR DE TU IZQUIERDA';
       }
       else if (sum === 8){
-        this.messageToShow = 'TODOS BEBEN Y DIRAN LA PALABRA MIERDA AL POSAR EL VASO SOBRE LA MESA. EL ULTIMO JUGADOR EN HACERLO DEBE BEBER OTRO VASO!';
+        this.messageToShow += 'TODOS BEBEN Y DIRAN LA PALABRA MIERDA AL POSAR EL VASO SOBRE LA MESA. EL ULTIMO JUGADOR EN HACERLO DEBE BEBER OTRO VASO!';
       }
       else if (sum === 9){
-        this.messageToShow = 'BEBE UN CHUPITO EL JUGADOR DE TU DERECHA';
+        this.messageToShow += 'BEBE UN CHUPITO EL JUGADOR DE TU DERECHA';
       }else {
-        this.messageToShow = 'BEBES UN CHUPITO';
+        this.messageToShow += 'BEBES UN CHUPITO';
       }
   
       this.showMessage = true;

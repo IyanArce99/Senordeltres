@@ -70,7 +70,3 @@
     </li>
   </ol>
 </div>
-<div class="button-container">
-  <button type="button" class="button" [disabled]='showButtonNextUser' [ngClass]="{'-disabled': showButtonNextUser}" (click)="rollDice()">Tirar dados</button>
-  <button type="button" class="button" style="margin-left: 20px;" (click)="getNext(actualPlayerIsSeniorDelTres)" *ngIf='showButtonNextUser'>Siguiente jugador</button>
-</div>
