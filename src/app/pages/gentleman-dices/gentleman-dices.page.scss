@@ -5,19 +5,26 @@
 //     transform: translateY(-50%);
 // }
 .wrapper {
-    justify-content: space-around;
+    justify-content: flex-end;
     flex-direction: column;
+    padding-bottom: 150px;
 }
 .text.-font-style{
     font-size: 2rem;
     color: #ffffff;
+    position: absolute;
+    width: 85%;
+    left: 50%;
+    top: 12rem;
+    transform: translateX(-50%);
 }
 .-prenda-container {
-    // position: absolute;
+    position: absolute;
     // top: 4rem;
-    // width: 85%;
-    // left: 50%;
-    // transform: translateX(-50%);
+    width: 85%;
+    left: 47.5%;
+    top: 12rem;
+    transform: translateX(-50%);
     font-size: 1.5em;
 }
 .brdr-10 {

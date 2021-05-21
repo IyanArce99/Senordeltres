@@ -1,5 +1,5 @@
-<div class="wrapper bg-05 h-100 d-flex" [ngClass]="{'bg-05': !showBackgroundRed(), 'bg-02': showBackgroundRed()}">
-  <div class="text -font-style px-3 py-2 text-center" *ngIf='getUserPlaying()'>
+<div class="wrapper bg-05 h-100 d-flex" [ngClass]="{'bg-05': !showBackgroundRed(), 'bg-02': showBackgroundRed()}" (click)='roll()'>
+  <div class="text -font-style px-3 py-2 text-center" *ngIf='getUserPlaying() && showInfoTurn()'>
     <h1><span class="font-weight-bold">{{getUserPlaying().username}}</span>, ¡es tu turno!, gira los dados</h1>
   </div>
   <div class="-prenda-container p-3 mx-3 text-center text-white bg-03 brdr-10" *ngIf='getShowMessage()'>
