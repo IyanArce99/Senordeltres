@@ -20,6 +20,11 @@ export class AddUsersPage implements OnInit {
   }
 
   ngOnInit() {
+    const x = this.form.controls.users as FormArray;
+    x.push(this.fb.group({
+      username: '',
+    }));
+    
    
   }
   onSubmit() {
