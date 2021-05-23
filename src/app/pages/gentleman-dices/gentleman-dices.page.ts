@@ -14,6 +14,7 @@ export interface User {
 })
 export class GentlemanDicesPage {
   @ViewChild(DicesComponent) dicesComponent: DicesComponent;
+  rollActivated: boolean = true;
 
   constructor() {}
 
@@ -33,7 +34,13 @@ export class GentlemanDicesPage {
     return DataService.showBackgroundRed;
   }
   roll(){
-    this.dicesComponent.rollDice();
+    if (this.rollActivated) {
+      this.dicesComponent.rollDice();
+      this.rollActivated = false;
+      setTimeout(()=>{
+        this.rollActivated = true;
+      }, DataService.rollDice ? 1400 : 0);
+    }
   }
   showInfoTurn() {
     if (DataService.selectSeniors) {
