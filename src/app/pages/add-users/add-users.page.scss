@@ -15,32 +15,37 @@
         display: flex;
         flex-direction: column;
         color: white;
+        .inputs-users {
+            max-height: 260px;
+            overflow-x: hidden;
+            
+            .player-item {
+                display: flex;
+                flex-direction: row;
+                font-size: 25px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
-        .player-item {
-            display: flex;
-            flex-direction: row;
-            font-size: 25px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-            .player-icon {
-                display: flex;
-                width: 15%;
-                font-size: 40px;
-                border-radius: 5px 0 0 5px;
+                .player-icon {
+                    display: flex;
+                    width: 15%;
+                    font-size: 40px;
+                    border-radius: 5px 0 0 5px;
+                }
+    
+                .player-name {
+                    width: 75%;
+                }
+                .player-action {
+                    width: 10%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0 5px 5px 0;
+                }
+    
             }
-
-            .player-name {
-                width: 75%;
-            }
-            .player-action {
-                width: 10%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 0 5px 5px 0;
-            }
-
         }
+
     }
 
     .add-player {

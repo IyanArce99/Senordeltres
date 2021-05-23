@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Storage } from '@ionic/storage'; 
@@ -44,6 +44,8 @@ export class AddUsersPage implements OnInit {
     x.push(this.fb.group({
       username: '',
     }));
+
+    
   }
 
   removeItem(i) {
