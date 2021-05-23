@@ -87,28 +87,28 @@ export class DataService {
   static obtainPrenda(resultDice: number[]): void{
     setTimeout(()=>{
       let sum: number = resultDice[0] + resultDice[1];
-      this.messageToShow = this.userPlaying.username + '. ';
+      // this.messageToShow = this.userPlaying.username + '. ';
       if(resultDice.every(value=>value === 3)){
-        this.messageToShow += 'DOBLE CABALLERO DEL TRES!';
+        this.messageToShow = 'DOBLE CABALLERO DEL TRES!';
         this.showBackgroundRed = true;
       }
       else if(resultDice.includes(3)){
-        this.messageToShow += 'BEBEN LOS SEÑORES DEL TRES!';
+        this.messageToShow = 'BEBEN LOS SEÑORES DEL TRES!';
         this.showBackgroundRed = true;
       }
       else if (resultDice[0] === resultDice[1]){
-        this.messageToShow += 'TU ELIGES QUIEN BEBE ' + resultDice[0] +' CHUPITOS!';
+        this.messageToShow = `${this.userPlaying.username}, tu eliges quien bebe ${resultDice[0]} chupitos`;
       }
       else if (sum === 7){
-        this.messageToShow += 'BEBE UN CHUPITO EL JUGADOR DE TU IZQUIERDA';
+        this.messageToShow = `${this.userPlaying.username}, bebe un chupito el jugador de tu izquierda`;
       }
       else if (sum === 8){
-        this.messageToShow += 'TODOS BEBEN Y DIRAN LA PALABRA MIERDA AL POSAR EL VASO SOBRE LA MESA. EL ULTIMO JUGADOR EN HACERLO DEBE BEBER OTRO VASO!';
+        this.messageToShow = '¡Teneis que beber TODOS un chupito!, el último en posar el vaso y decir la palabra mierda, tendrá que beber otro chupito';
       }
       else if (sum === 9){
-        this.messageToShow += 'BEBE UN CHUPITO EL JUGADOR DE TU DERECHA';
+        this.messageToShow = `${this.userPlaying.username}, bebe un chupito el jugador de tu derecha`;
       }else {
-        this.messageToShow += 'BEBES UN CHUPITO';
+        this.messageToShow = `${this.userPlaying.username}, te tienes que beber un chupito`;
       }
   
       this.showMessage = true;
