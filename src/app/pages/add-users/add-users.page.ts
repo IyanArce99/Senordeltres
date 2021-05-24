@@ -41,9 +41,17 @@ export class AddUsersPage implements OnInit {
 
   addUserForm() {
     const x = this.form.controls.users as FormArray;
+    
     x.push(this.fb.group({
       username: '',
     }));
+
+    
+    setTimeout(() => {
+      let element = document.getElementById('form-' +  (x.length - 1));
+      element.scrollIntoView();
+      element.getElementsByTagName('input')[0].focus();
+    },100);
 
     
   }

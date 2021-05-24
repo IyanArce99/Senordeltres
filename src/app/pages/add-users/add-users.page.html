@@ -11,7 +11,7 @@
         <div class="player-item mb-2" formArrayName="users" *ngFor="let creds of form.controls.users.controls; let i = index">
           <div class="player-icon bg-02 p-2"><ion-icon name="person"></ion-icon></div>
           <ng-container [formGroupName]="i">
-            <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador" formControlName="username"></ion-input>
+            <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador" formControlName="username" [id]='"form-" + i'></ion-input>
           </ng-container>
           <div class="player-action bg-01 pr-2"><ion-icon (click)="removeItem(i)" name="trash"></ion-icon></div>
         </div>
