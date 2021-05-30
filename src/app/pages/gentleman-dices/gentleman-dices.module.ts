@@ -9,7 +9,8 @@ import { GentlemanDicesPageRoutingModule } from './gentleman-dices-routing.modul
 import { GentlemanDicesPage } from './gentleman-dices.page';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-import { DicesComponent } from '../../components/dices/dices.component';
+// import { DicesComponent } from '../../components/dices/dices.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,8 +18,9 @@ import { DicesComponent } from '../../components/dices/dices.component';
     FormsModule,
     IonicModule,
     GentlemanDicesPageRoutingModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SharedModule
   ],
-  declarations: [GentlemanDicesPage, DicesComponent]
+  declarations: [GentlemanDicesPage]
 })
 export class GentlemanDicesPageModule {}

@@ -6,7 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-import { DicesComponent } from '../../components/dices/dices.component';
+// import { DicesComponent } from '../../components/dices/dices.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { YouAreComponent } from './you-are.component';
 import { YouAreRoutingModule } from './you-are-routing.module';
 
@@ -16,8 +17,9 @@ import { YouAreRoutingModule } from './you-are-routing.module';
     FormsModule,
     IonicModule,
     YouAreRoutingModule,
+    SharedModule,
     IonicStorageModule.forRoot()
   ],
-  declarations: [YouAreComponent, DicesComponent]
+  declarations: [YouAreComponent]
 })
 export class YouArePageModule {}

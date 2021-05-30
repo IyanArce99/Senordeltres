@@ -8,10 +8,10 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
       <div class="inputs-users">
-        <div class="player-item mb-2" formArrayName="users" *ngFor="let creds of form.controls.users.controls; let i = index">
+        <div class="player-item mb-2" formArrayName="users" *ngFor="let creds of form.get('users')['controls']; let i = index">
           <div class="player-icon bg-02 p-2"><ion-icon name="person"></ion-icon></div>
           <ng-container [formGroupName]="i">
-            <ion-input class="player-name bg-01 pl-4" placeholder="Nombre jugador" formControlName="username" [id]='"form-" + i'></ion-input>
+            <ion-input class="player-name bg-01 pl-3" placeholder="Nombre jugador" formControlName="username" [id]='"form-" + i'></ion-input>
           </ng-container>
           <div class="player-action bg-01 pr-2"><ion-icon (click)="removeItem(i)" name="trash"></ion-icon></div>
         </div>
@@ -24,7 +24,6 @@
   
     <div class="play d-flex justify-content-center">
       <button type="submit" class="bg-02 px-3 py-2 text-white d-flex align-items-center" (click)='onSubmit()'>PLAY <ion-icon class="ml-2" name="play"></ion-icon></button>
-      {{textoDeInput}}
     </div>
     
 
